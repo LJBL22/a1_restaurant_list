@@ -9,6 +9,9 @@ const exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' })) //預設 layout 叫做 main
 app.set('view engine', 'handlebars') //用上面設定好的引擎來當 view.engine 的意思
 
+// setting static files
+app.use(express.static('public'))
+
 // routes setting
 app.get('/', (req, res) => {
   res.render('index')

@@ -3,9 +3,15 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+// require express-handlebars here
+const exphbs = require('express-handlebars')
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' })) //預設 layout 叫做 main
+app.set('view engine', 'handlebars') //用上面設定好的引擎來當 view.engine 的意思
+
 // routes setting
 app.get('/', (req, res) => {
-  res.send('This is my restaurant list built with Express')
+  res.render('index')
 })
 
 // start and listen on the Express server

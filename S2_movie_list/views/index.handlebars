@@ -1,0 +1,38 @@
+<!-- ./views/index.handlebars -->
+
+<!-- 樣板引擎在把 handlebars 檔案編譯轉換成 HTML 檔案的時候，可以為原本的 HTML 添加許多功能。其中一個功能，就是讓我們就可以把 JavaScript 的資料帶入樣板當中使用。 -->
+<div class="container mt-5">
+  <!-- search bar -->
+  <div class="row" id="search-bar">
+    <div class="col-12">
+      <form action="/search">
+        <!-- 沒寫的話預設是 method="GET"-->
+        <!-- 增加 search 後要去 app.js 增加 get search 路由-->
+        <!-- 這裡的 value="{{keyword}}" 是留存上一次搜尋的關鍵字給使用者重新確認參照-->
+        <div class="input-group mb-3">
+          <input type="text" name="keyword" class="form-control" placeholder="Enter movie name to search..."
+            aria-label="Movie Name..." value="{{keyword}}" aria-describedby="search-button">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- movie list -->
+  <div class="row" id="data-panel">
+    {{#each movies}}
+    <div class="col-sm-3">
+      <a href="/movies/{{ this.id }}" class="text-secondary">
+        <div class="card mb-2">
+          <img class="card-img-top" src="https://movie-list.alphacamp.io/posters/{{ this.image }}" alt="Card image cap">
+          <div class="card-body movie-item-body">
+            <h6 class="card-title">{{ this.title }}</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+</div>

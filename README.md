@@ -17,11 +17,11 @@
 
 1.下載此專案至你的電腦  
 ```
-$ git clone "https://github.com/LJBL22/restaurants_list.git"
+$ git clone "https://github.com/LJBL22/a1_restaurant_list.git"
 ```
-2.把執行位置移到你的電腦中的 restaurant_list 的位置  
+2.把執行位置移到你的電腦中的 a1_restaurant_list 的位置  
 ```
-$ cd .../restaurant_list
+$ cd .../a1_restaurant_list
 ```
 3.安裝 express
 ```

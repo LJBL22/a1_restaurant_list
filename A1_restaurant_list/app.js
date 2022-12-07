@@ -27,6 +27,16 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
   res.render('show', { restaurant: restaurant })
 })
 
+//route setting _ search result _ query string
+app.get('/search', (req, res) => {
+  console.log('req query', req.query.keyword); //終端機檢查看到的搜尋字串 > 接著存進變數
+  const keyword = req.query.keyword
+  const restaurants = restaurantList.results.filter(restaurant => { //將篩選出的restaurant(s)放入 restaurants 變數
+    return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+  }) //若 搜尋出來的 restaurant 符合 keyword 則放在陣列裡 （然後都用 toLowerCase 來整理）
+  res.render('index', { restaurants: restaurants, keyword: keyword }) //新增這個值讓使用者可以參照自己最後一次查詢的keyword
+})
+
 // start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`)
